@@ -1,0 +1,43 @@
+//a demo of how to use "msgtool.h"
+
+#include "msgtool.h"
+#include <unistd.h> //for sleep()
+#include "iostream"
+
+using namespace std;
+
+int main0(int argc, char *argv[])
+{
+	msg_queue_server server;
+	long type=1;
+	int round=0;
+	while(true)
+	{
+		while(server.recv_msg(type))
+		{
+			char* msg=server.get_msg();
+			cout<<msg<<endl;
+			if(strcmp(msg, "server_exit")==0) return 0;
+		}
+		if(round>0) cout<<"Round "<<round<<" done."<<endl;
+		round++;
+		sleep(6);//wake up every 6 seconds
+	}
+	return 0;
+}
+
+int main(int argc, char *argv[])
+{
+	msg_queue_client client;
+	long type=1;
+	char tmp[80];
+	while(true)
+	{
+		cout<<"Send: ";
+		cin.get(tmp, 50);//readLine
+		cin.get();//skipe line-breaker
+		if(strcmp(tmp, "exit")==0) return 0;
+		client.send_msg(type, tmp);
+	}
+	return 0;
+}

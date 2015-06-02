@@ -1,0 +1,43 @@
+#include "shmtool.h"
+#include "iostream"
+#include "string.h"
+#include <unistd.h> //for sleep()
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	int seg_size=80;
+	shared_mem shm(seg_size);
+	char* head=(char*)shm.get_head();
+	if(shm.creator())
+	{
+		cout<<"I am the creator !!!"<<endl;
+		char buf[80];
+		while(true)
+		{
+			cout<<"write shm / exit? (w/e)";
+			cin>>buf;
+			if(buf[0]=='e') return 0;
+			else if(buf[0]=='w')
+			{
+				cout<<"Input your content: "<<endl;//cannot have space
+				cin>>buf;
+				strcpy(head, buf);
+			}
+		}
+	}
+	else
+	{
+		cout<<"I am a follower."<<endl;
+		while(true)
+		{
+			cout<<"read shm / exit? (r/e)";
+			char c;
+			cin>>c;
+			if(c=='e') return 0;
+			else if(c=='r') cout<<head<<endl;
+		}
+	}
+	return 0;
+}
