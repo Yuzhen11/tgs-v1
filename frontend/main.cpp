@@ -1,9 +1,9 @@
-#include "TemporalOperator.h"
+#include "GtimerOperator.h"
 using namespace std;
 
 int main()
 {
-    TemporalOperator op("/yuzhen/output");
+    GtimerOperator op("/yuzhen/output");
     string s1 = op.out_nb(0);
     cout << s1 << endl;
     resultVector res = op.loadResult(s1);
@@ -14,6 +14,26 @@ int main()
     resultVector res2 = op.loadResult(s2);
     printresult(res2);
     
+    s1 = op.out_edge(0);
+    cout << s1 << endl;
+    res = op.loadResult(s1);
+    printresult(res);
+    
+    s2 = op.out_edge(1,1,5);
+    cout << s2 << endl;
+    res2 = op.loadResult(s2);
+    printresult(res2);
+
+    s1 = op.in_nb(3);
+    cout << s1 << endl;
+    res = op.loadResult(s1);
+    printresult(res);
+    
+    s2 = op.in_nb(3,1,5);
+    cout << s2 << endl;
+    res2 = op.loadResult(s2);
+    printresult(res2);
+
     resultVector r;
     string s;
     s = op.reachability(0, 3);

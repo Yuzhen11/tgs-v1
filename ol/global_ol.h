@@ -65,6 +65,10 @@ inline void set_query_entry(void* q)
 //online query
 #define OUT_NEIGHBORS_QUERY 1
 #define IN_NEIGHBORS_QUERY 2
+#define OUT_EDGES_QUERY 41
+#define IN_EDGES_QUERY 42
+
+
 #define REACHABILITY_QUERY 3
 #define REACHABILITY_QUERY_TOPCHAIN 4
 #define EARLIEST_QUERY_TOPCHAIN 5
