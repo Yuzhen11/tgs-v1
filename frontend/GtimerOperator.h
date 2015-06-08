@@ -19,8 +19,8 @@ public:
     int getQueryNum();
     void changeToString(char* msg);
     resultVector loadResult(string inDir);
-    void printRes(const resultVector& res);
     string queryHandler(int n_args, ...);
+    void printResult(const resultVector& res);
 
 
     void server_exit();
@@ -128,7 +128,7 @@ resultVector GtimerOperator::loadResult(string sinDir)
     }
     return ret;
 }
-void printresult(const resultVector& res)
+void GtimerOperator::printResult(const resultVector& res)
 {
 	cout << "-------result-------" << endl;
 	for (int i = 0; i < res.size(); ++ i)

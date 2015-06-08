@@ -9,8 +9,8 @@ LDFLAGS = -lhdfs -Wno-deprecated -O2
 
 all: run
 
-run: tgs.cpp
-	$(CCOMPILE) -std=c++11 tgs.cpp $(CPPFLAGS) $(LIB) $(LDFLAGS)  -o tgs
+run: Gtimer.cpp
+	$(CCOMPILE) -std=c++11 Gtimer.cpp $(CPPFLAGS) $(LIB) $(LDFLAGS)  -o Gtimer
 	./kill.py
 	
 clean:
