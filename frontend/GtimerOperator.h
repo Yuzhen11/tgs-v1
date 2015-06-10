@@ -44,15 +44,18 @@ public:
     string topk_shortest(int u, int k, int t1, int t2);
     string topk_latest(int u, int k, int t1, int t2);
     
+    string khop(int u, int k, int t1, int t2);
+    /*
     string khop_earliest(int u, int k, int t1, int t2);
     string khop_fastest(int u, int k, int t1, int t2);
     string khop_shortest(int u, int k, int t1, int t2);
     string khop_latest(int u, int k, int t1, int t2);
+    */
     
     string intersect(int u, int v, int t1, int t2);
     string middle(int u, int v, int t1, int t2);
     
-    string addedge(int u, int v, int t1, int t2);
+    void addedge(int u, int v, int t1, int t2);
 
 private:
     msg_queue_client client;
@@ -231,7 +234,11 @@ string GtimerOperator::topk_latest(int u, int k, int t1 = -1, int t2 = -1)
 {
 	return queryHandler(5, 25, u, k, t1, t2);
 }
-
+string GtimerOperator::khop(int u, int k, int t1 = -1, int t2 = -1)
+{
+	return queryHandler(5, 26, u, k, t1, t2);
+}
+/*
 string GtimerOperator::khop_earliest(int u, int k, int t1 = -1, int t2 = -1)
 {
 	return queryHandler(5, 26, u, k, t1, t2);
@@ -248,6 +255,7 @@ string GtimerOperator::khop_latest(int u, int k, int t1 = -1, int t2 = -1)
 {
 	return queryHandler(5, 29, u, k, t1, t2);
 }
+*/
 
 string GtimerOperator::intersect(int u, int v, int t1 = -1, int t2 = -1)
 {
@@ -258,7 +266,7 @@ string GtimerOperator::middle(int u, int v, int t1 = -1, int t2 = -1)
 	return queryHandler(5, 32, u, v, t1, t2);
 }
 
-string GtimerOperator::addedge(int u, int v, int t1 = -1, int t2 = -1)
+void GtimerOperator::addedge(int u, int v, int t1 = -1, int t2 = -1)
 {
-	return queryHandler(5, 11, u, v, t1, t2);
+	queryHandler(5, 11, u, v, t1, t2);
 }

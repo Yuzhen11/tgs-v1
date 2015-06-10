@@ -81,6 +81,10 @@ int main()
     r = op.loadResult(s);
     op.printResult(r);
 
+    s = op.khop(0, 1);
+    r = op.loadResult(s);
+    op.printResult(r);
+    /*
     s = op.khop_earliest(0, 1);
     r = op.loadResult(s);
     op.printResult(r);
@@ -96,7 +100,7 @@ int main()
     s = op.khop_latest(0, 1);
     r = op.loadResult(s);
     op.printResult(r);
-    
+    */
     
     s = op.intersect(0, 3);
     r = op.loadResult(s);
